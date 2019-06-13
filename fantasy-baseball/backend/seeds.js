@@ -4,6 +4,7 @@ const Players = require('./models/Players')
 const FantasyTeams = require('./models/FantasyTeams')
 const Leagues = require('./models/Leagues')
 const Users = require('./models/users')
+const fetch = require('node-fetch')
 
 const d = new Date ()
 const BASE_URL = 'http://lookup-service-prod.mlb.com'
@@ -20,7 +21,7 @@ FantasyTeams.sync()
 Leagues.sync()
 Users.sync()
 
-//create seed data for Stats
+//create seed data for Players and Stats
 fetch(TEAMS_URL)
   .then(res=>res.json())
   .then(data=>{

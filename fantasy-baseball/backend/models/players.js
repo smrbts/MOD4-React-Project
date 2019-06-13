@@ -15,6 +15,7 @@ const Players = sequelize.define('players',{
       type: INTEGER,
       primaryKey: true
     },
+    fantasyTeamId: {type:INTEGER},
     team_name: {type: STRING},
     name_display_first_last: {type: STRING},
     primary_position_txt: {type: STRING},

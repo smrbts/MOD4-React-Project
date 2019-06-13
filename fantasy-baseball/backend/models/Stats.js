@@ -3,7 +3,6 @@ const Sequelize = require('sequelize')
 const STRING = Sequelize.STRING
 const INTEGER = Sequelize.INTEGER
 const BOOLEAN = Sequelize.BOOLEAN
-// const (STRING) = Sequelize (Samething but different syntax)
 
 //Open Database Connection
 const sequelize = new Sequelize({

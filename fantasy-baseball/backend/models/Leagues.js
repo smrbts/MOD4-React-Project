@@ -10,18 +10,17 @@ const sequelize = new Sequelize({
 })
 
 //Create the Schema
-const Users = sequelize.define('users',{
+const Leagues = sequelize.define('leagues',{
     id:{
       type: INTEGER,
       primaryKey: true
     },
-    username: {type: STRING},
-    password: {type: STRING},
-    first_name: {type: STRING},
-    last_name: {type: STRING},
-    bio: {type: STRING}
+    userId: {type: INTEGER},
+    leagueName: {type: STRING},
+    imageURL: {type: STRING},
+    description: {type: STRING}
 })
 
-module.exports = Users
+module.exports = Leagues
 
 sequelize.sync()

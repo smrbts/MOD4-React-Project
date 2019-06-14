@@ -31,6 +31,11 @@ app.get('/stats', (req,res) => {
     .then(stats => res.json(stats))
 })
 
+app.get('/stats/:player_id', (req,res) => {
+  Stats.findAll({where: {playerId:req.params.player_id} })
+  .then(stats => res.json(stats))
+})
+
 //Players Server
 app.get('/players', async (req,res) => {
   Players.findAll()

@@ -4,7 +4,9 @@ const Players = require('./models/Players')
 const FantasyTeams = require('./models/FantasyTeams')
 const Leagues = require('./models/Leagues')
 const Users = require('./models/users')
-const fetch = require('node-fetch')
+const request = require('request')
+
+process.env.UV_THREADPOOL_SIZE = 128
 
 const d = new Date ()
 const BASE_URL = 'http://lookup-service-prod.mlb.com'
@@ -21,16 +23,29 @@ FantasyTeams.sync()
 Leagues.sync()
 Users.sync()
 
+const options = (url) => {
+  return({
+    url: url,
+    method: 'GET',
+    agent: false,
+    pool:{
+      maxSockets: 100
+    },
+    timeout: 120000,
+    time: true,
+    json:true
+  })
+}
+
 //create seed data for Players and Stats
-fetch(TEAMS_URL)
-  .then(res=>res.json())
-  .then(data=>{
-    let teamIDs = data.team_all_season.queryResults.row.map(team => team.team_id)
-    teamIDs.map((teamID)=> {
-      fetch(PLAYER_ROSTER_URL(teamID))
-        .then(res=>res.json())
-        .then(data=>{
-          let players = data.roster_40.queryResults.row
+request(options(TEAMS_URL), (error,response,body) => {
+    if (error) console.log(error);
+    else {
+      let teamIDs = body.team_all_season.queryResults.row.map(team => team.team_id)
+      teamIDs.map((teamID)=> {
+        request(options(PLAYER_ROSTER_URL(teamID)), (error,response,body) => {
+          if (error) console.log(error);
+          let players = body.roster_40.queryResults.row
           players.map((player)=>{
             let playerOBJ = {
               id: player.player_id,
@@ -44,80 +59,89 @@ fetch(TEAMS_URL)
             }
             Players.create(playerOBJ)
             if (player.position_txt === "P") {
-              fetch(CAREER_PITCHING_STATS_URL(player.player_id))
-                .then(res=>res.json())
-                .then(data=>{
-                  let careerStats = data.sport_career_pitching.queryResults.row
-                  let statOBJ = {
-                      playerId: careerStats.player_id,
-                      career: true,
-                      p_w: careerStats.bb,
-                      p_k: careerStats.so,
-                      p_era: careerStats.era,
-                      p_hwa: parseInt(careerStats.h) + parseInt(careerStats.bb)
-                    }
-                  Stats.create(statOBJ)
-                })
-                fetch(SEASON_PITCHING_STATS_URL(player.player_id))
-                  .then(res=>res.json())
-                  .then(data=>{
-                    let careerStats = data.sport_career_pitching.queryResults.row
-                    let statOBJ = {
-                        playerId: careerStats.player_id,
+              request(options(CAREER_PITCHING_STATS_URL(player.player_id)), (error,response,body)=> {
+                if (error) {console.log(error)}
+                else {
+                  if (body.sport_career_pitching.queryResults.totalSize !== '0') {
+                    let stat = body.sport_career_pitching.queryResults.row
+                    Stats.create({
+                        playerId: stat.player_id,
+                        career: true,
+                        p_w: stat.bb,
+                        p_k: stat.so,
+                        p_era: stat.era,
+                        p_hwa: parseInt(stat.h) + parseInt(stat.bb)
+                      })
+                  }
+                }
+              })
+              request(options(SEASON_PITCHING_STATS_URL(player.player_id)), (error,response,body)=> {
+                if (error) {console.log(error)}
+                else{
+                  if(body.sport_pitching_tm.queryResults.totalSize !== '0'){
+                    let stat = body.sport_pitching_tm.queryResults.row
+                    Stats.create({
+                        playerId: stat.player_id,
                         career: false,
-                        p_w: careerStats.bb,
-                        p_k: careerStats.so,
-                        p_era: careerStats.era,
-                        p_hwa: parseInt(careerStats.h) + parseInt(careerStats.bb)
-                      }
-                    Stats.create(statOBJ)
-                  })
+                        p_w: stat.bb,
+                        p_k: stat.so,
+                        p_era: stat.era,
+                        p_hwa: parseInt(stat.h) + parseInt(stat.bb)
+                      })
+                  }
+                }
+              })
             }
             else {
-              fetch(CAREER_HITTING_STATS_URL(player.player_id))
-                .then(res=>res.json())
-                .then(data=>{
-                  let careerStats = data.sport_career_hitting.queryResults.row
-                  let statOBJ = {
-                      playerId: careerStats.player_id,
+              request(options(CAREER_HITTING_STATS_URL(player.player_id)), (error,response,body)=> {
+                if (error) {console.log(error)}
+                else {
+                  if (body.sport_career_hitting.queryResults.totalSize !== '0') {
+                    let stat = body.sport_career_hitting.queryResults.row
+                    Stats.create({
+                      playerId: stat.player_id,
                       career: true,
-                      h: careerStats.h,
-                      d: careerStats.d,
-                      t: careerStats.t,
-                      hr: careerStats.hr,
-                      r: careerStats.r,
-                      rbi: careerStats.rbi,
-                      bb: careerStats.bb,
-                      sb: careerStats.sb,
-                      cs: careerStats.cs,
-                      avg: careerStats.avg
-                    }
-                  Stats.create(statOBJ)
-                })
-              fetch(SEASON_HITTING_STATS_URL(player.player_id))
-                .then(res=>res.json())
-                .then(data=>{
-                  let careerStats = data.sport_career_hitting.queryResults.row
-                  let statOBJ = {
-                      playerId: careerStats.player_id,
+                      h: stat.h,
+                      d: stat.d,
+                      t: stat.t,
+                      hr: stat.hr,
+                      r: stat.r,
+                      rbi: stat.rbi,
+                      bb: stat.bb,
+                      sb: stat.sb,
+                      cs: stat.cs,
+                      avg: stat.avg
+                    })
+                  }
+                }
+              })
+              request(options(SEASON_HITTING_STATS_URL(player.player_id)), (error,response,body)=> {
+                if (error) {console.log(error)}
+                else {
+                  if (body.sport_hitting_tm.queryResults.totalSize !== '0') {
+                    let stat = body.sport_hitting_tm.queryResults.row
+                    Stats.create({
+                      playerId: stat.player_id,
                       career: false,
-                      h: careerStats.h,
-                      d: careerStats.d,
-                      t: careerStats.t,
-                      hr: careerStats.hr,
-                      r: careerStats.r,
-                      rbi: careerStats.rbi,
-                      bb: careerStats.bb,
-                      sb: careerStats.sb,
-                      cs: careerStats.cs,
-                      avg: careerStats.avg
-                    }
-                  Stats.create(statOBJ)
-                })
+                      h: stat.h,
+                      d: stat.d,
+                      t: stat.t,
+                      hr: stat.hr,
+                      r: stat.r,
+                      rbi: stat.rbi,
+                      bb: stat.bb,
+                      sb: stat.sb,
+                      cs: stat.cs,
+                      avg: stat.avg
+                    })
+                  }
+                }
+              })
             }
           })
         })
-    })
+      })
+    }
   })
 
 //create seed data for Fantasy Teams

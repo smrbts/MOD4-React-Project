@@ -1,26 +1,46 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {Component}from 'react';
 import './App.css';
+import 'typeface-roboto';
+import {BrowserRouter, Route, Switch} from 'react-router-dom'
+import WelcomePage from './components/WelcomePage'
+import Home from './components/Home'
+import SignUp from './components/SignUp'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends Component 
+{
+  constructor()
+  {
+    super()
+    this.state =
+    {
+      players: [],
+      teams: [],
+      signedIn: false,
+      wallet: 1000
+    }
+  }
+
+  logIn = () => 
+  {
+    this.setState(
+      {
+        signedIn: !this.state.signedIn
+      })
+  }
+
+  render()
+  {
+    return (
+      <BrowserRouter>
+       <div>
+         <Switch>
+          <Route exact path='/' render={(routeProps) => <WelcomePage {...routeProps} /> }/>
+          <Route path='/sign-up' render={(routeProps) => <SignUp {...routeProps} />} />
+          <Route path='/home' render={(routeProps) => <Home {...routeProps} />} />
+         </Switch>
+       </div>
+      </BrowserRouter>
+    );
+  }
+ 
 }
-
-export default App;

@@ -3,18 +3,26 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.0.0-rc.0",
+    "@material-ui/icons": "^4.2.0",
     "body-parser": "^1.19.0",
+    "cool-images": "^1.0.3",
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "node-fetch": "^2.6.0",
+    "namor": "^1.1.2",
     "nodemon": "^1.19.1",
     "pryjs": "^1.0.3",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-router": "^5.0.1",
+    "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^0.87.1",
     "request": "^2.88.0",
     "sequelize": "^5.8.9",
-    "sqlite3": "^4.0.8"
+    "sqlite3": "^4.0.8",
+    "typeface-roboto": "0.0.54"
   },
   "scripts": {
     "start": "react-scripts start",

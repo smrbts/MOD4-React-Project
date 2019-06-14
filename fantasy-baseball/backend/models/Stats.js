@@ -3,7 +3,6 @@ const Sequelize = require('sequelize')
 const STRING = Sequelize.STRING
 const INTEGER = Sequelize.INTEGER
 const BOOLEAN = Sequelize.BOOLEAN
-// const (STRING) = Sequelize (Samething but different syntax)
 
 //Open Database Connection
 const sequelize = new Sequelize({
@@ -19,8 +18,6 @@ const Stats = sequelize.define('stats',{
     },
     playerId: {type: INTEGER},
     career: {type: BOOLEAN},
-    start: {type: STRING},
-    end: {type: STRING},
     h: {type: INTEGER},
     d: {type: INTEGER},
     t: {type: INTEGER},

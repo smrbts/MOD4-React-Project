@@ -18,8 +18,6 @@ const Stats = sequelize.define('stats',{
     },
     playerId: {type: INTEGER},
     career: {type: BOOLEAN},
-    start: {type: STRING},
-    end: {type: STRING},
     h: {type: INTEGER},
     d: {type: INTEGER},
     t: {type: INTEGER},

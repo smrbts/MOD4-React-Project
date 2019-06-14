@@ -1,14 +1,13 @@
 import React, {Component}from 'react';
+import LeagueTeams from '../containers/LeagueTeams'
 
 export default class Home extends Component 
 {
   render()
   {
     return (
-      <div>
-          Home Page
-      </div>
-    );
+      <LeagueTeams/>
+    ); 
   }
  
 }

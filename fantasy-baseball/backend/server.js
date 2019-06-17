@@ -1,6 +1,5 @@
 const express = require('express')
 const bodyParser = require('body-parser')
-const pry = require('pryjs')
 const cors = require ('cors')
 const Stats = require ('./models/Stats')
 const Players = require('./models/Players')
@@ -70,7 +69,7 @@ app.patch('/fantasyteams/:id', async (req,res) => {
 
 app.delete('/fantasyteams/:id', async (req,res) => {
   let team = await FantasyTeams.findByPk(req.params.id)
-  painting.destroy()
+  team.destroy()
 })
 
 //Fantasy League Server

@@ -6,7 +6,7 @@ export default class Home extends Component
   render()
   {
     return (
-      <LeagueTeams/>
+      <LeagueTeams players= {this.props.players} signedIn = {this.props.signedIn} />
     ); 
   }
  

@@ -6,7 +6,7 @@ export default class YourTeam extends Component
   {
     return (
       <div>
-  
+        "MY TEAM PAGE"
       </div>
     );
   }

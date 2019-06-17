@@ -20,8 +20,10 @@ export default class App extends Component
     }
   }
 
-  logIn = () =>
+  logIn = (e) =>
   {
+    e.preventDefault()
+    console.log(e.target)
     this.setState(
       {
         signedIn: !this.state.signedIn
@@ -34,7 +36,7 @@ export default class App extends Component
       <BrowserRouter>
        <div>
          <Switch>
-          <Route exact path='/' render={(routeProps) => <WelcomePage {...routeProps} /> }/>
+          <Route exact path='/' render={(routeProps) => <WelcomePage {...routeProps}  login={this.login} /> }/>
           <Route path='/sign-up' render={(routeProps) => <SignUp {...routeProps} />} />
           <Route path='/home' render={(routeProps) => <Home {...routeProps} />} />
          </Switch>

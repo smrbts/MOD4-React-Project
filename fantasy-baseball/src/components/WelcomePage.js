@@ -15,41 +15,41 @@ import { makeStyles } from '@material-ui/core/styles';
 
 
 const useStyles = makeStyles(theme => ({
-  root: 
+  root:
   {
     height: '100vh',
   },
-  image: 
+  image:
   {
     backgroundImage: 'url(https://images.unsplash.com/photo-1474225349448-b36696c95008?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1351&q=80)',
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
   },
-  paper: 
+  paper:
   {
     margin: theme.spacing(8, 4),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
   },
-  avatar: 
+  avatar:
   {
     margin: theme.spacing(1),
     backgroundColor: theme.palette.secondary.main,
   },
-  form: 
+  form:
   {
     width: '100%', // Fix IE 11 issue.
     marginTop: theme.spacing(1),
   },
-  submit: 
+  submit:
   {
     margin: theme.spacing(3, 0, 2),
   },
 }));
 
-export default function SignInSide() 
+export default function SignInSide()
 {
   const classes = useStyles();
 
@@ -97,6 +97,7 @@ export default function SignInSide()
               fullWidth
               variant="contained"
               color="primary"
+              onClick={ (e) => this.props.logIn(e) }
               className={classes.submit}
             >
               Sign In

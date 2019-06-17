@@ -6,7 +6,7 @@ import WelcomePage from './components/WelcomePage'
 import Home from './components/Home'
 import SignUp from './components/SignUp'
 
-export default class App extends Component 
+export default class App extends Component
 {
   constructor()
   {
@@ -20,7 +20,7 @@ export default class App extends Component
     }
   }
 
-  logIn = () => 
+  logIn = () =>
   {
     this.setState(
       {
@@ -42,5 +42,5 @@ export default class App extends Component
       </BrowserRouter>
     );
   }
- 
+
 }

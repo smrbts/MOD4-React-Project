@@ -1,6 +1,4 @@
 const express = require('express')
-// const bodyParser = require('body-parser')
-const pry = require('pryjs')
 const cors = require ('cors')
 const Stats = require ('./models/Stats')
 const Players = require('./models/Players')
@@ -25,6 +23,7 @@ Leagues.hasMany(FantasyTeams)
 Users.hasMany(FantasyTeams)
 FantasyTeams.belongsTo(Users)
 
+
 // Use Routes
 app.use('/teams', require('./routes/fantasyTeams'));
 app.use('/leagues', require('./routes/leagues'));
@@ -32,6 +31,7 @@ app.use('/players', require('./routes/players'));
 app.use('/stats', require('./routes/stats'));
 app.use('/users', require('./routes/users'));
 app.use('/auth', require('./routes/auth'));
+
 
 //Listener Port 6969 - Because Justin is a Child
 const port = 6969

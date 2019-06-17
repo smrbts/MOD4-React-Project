@@ -69,7 +69,10 @@ export default function ButtonAppBar()
           <Typography variant="h6" className={classes.title}>
             Fantasy Baseball Home
           </Typography>
-          <Button color="inherit">
+          <Button 
+          color="inherit"
+          href="/"
+          >
               Logout
           </Button>
         </Toolbar>

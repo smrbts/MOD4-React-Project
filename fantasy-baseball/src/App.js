@@ -47,6 +47,11 @@ export default class App extends Component
       })
   }
 
+  addPlayer = () => 
+  {
+    
+  }
+
   shufflePlayers= () => 
   {
     let arr = this.state.players

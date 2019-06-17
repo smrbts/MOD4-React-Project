@@ -6,7 +6,7 @@ const PlayerCard = props =>
 {
   let {player} = props;
   return (
-    <div className="ui four column grid">
+    <div className="ui column">
       <div className="ui card"
         key={player.id}
         // onClick={() => props.showInfo ? props.showInfo(props.bot): props.removeBot(props.bot)}
@@ -31,7 +31,7 @@ const PlayerCard = props =>
           </span>
           <span>
             <i className="icon lightning" />
-            {player.age}
+            Age:{player.age}
           </span>
           <span>
             <i className="icon shield" />

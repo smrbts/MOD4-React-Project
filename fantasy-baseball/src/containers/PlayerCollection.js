@@ -8,9 +8,11 @@ export default class PlayerCollection extends Component
   render()
   {
     return (
-      <div>
+      <div className= "ui four column grid">
         <YourTeam team = {this.props.team}/>
+        <div className= "row">        
         {this.props.openPlayers.map(player => <PlayerCard player = {player}/>)}
+        </div>
       </div>
     );
   }

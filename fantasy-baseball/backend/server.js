@@ -1,5 +1,4 @@
 const express = require('express')
-const bodyParser = require('body-parser')
 const cors = require ('cors')
 const Stats = require ('./models/Stats')
 const Players = require('./models/Players')
@@ -9,7 +8,7 @@ const Leagues = require('./models/Leagues')
 
 const app = express()
 
-app.use(bodyParser.json())
+app.use(express.json())
 app.use(cors())
 
 Stats.belongsTo(Players)
@@ -24,105 +23,15 @@ Leagues.hasMany(FantasyTeams)
 Users.hasMany(FantasyTeams)
 FantasyTeams.belongsTo(Users)
 
-//Stats Server
-app.get('/stats', (req,res) => {
-  Stats.findAll()
-    .then(stats => res.json(stats))
-})
 
-app.get('/stats/:player_id', (req,res) => {
-  Stats.findAll({where: {playerId:req.params.player_id} })
-  .then(stats => res.json(stats))
-})
+// Use Routes
+app.use('/teams', require('./routes/fantasyTeams'));
+app.use('/leagues', require('./routes/leagues'));
+app.use('/players', require('./routes/players'));
+app.use('/stats', require('./routes/stats'));
+app.use('/users', require('./routes/users'));
+app.use('/auth', require('./routes/auth'));
 
-//Players Server
-app.get('/players', async (req,res) => {
-  Players.findAll()
-    .then(players => res.json(players))
-  })
-
-app.get('/players/:id', (req,res) => {
-  Players.findByPk(req.params.id)
-    .then(player => res.json(player))
-})
-
-//Fantasy Teams Server
-app.get('/fantasyteams', (req,res) => {
-  FantasyTeams.findAll()
-    .then(teams => res.json(teams))
-})
-
-app.get('/fantasyteams/:id', (req,res) => {
-  FantasyTeams.findByPk(req.params.id)
-    .then(team => res.json(team))
-})
-
-app.post('/fantasyteams', (req,res) => {
-  FantasyTeams.create(req.body)
-    .then(team => res.json(team))
-})
-
-app.patch('/fantasyteams/:id', async (req,res) => {
-  let team = await FantasyTeams.findByPk(req.params.id)
-  team.update(req.body)
-})
-
-app.delete('/fantasyteams/:id', async (req,res) => {
-  let team = await FantasyTeams.findByPk(req.params.id)
-  team.destroy()
-})
-
-//Fantasy League Server
-app.get('/leagues', (req,res) => {
-  Leagues.findAll()
-    .then(leagues => res.json(leagues))
-})
-
-app.get('/leagues/:id', (req,res) => {
-  Leagues.findByPk(req.params.id)
-    .then(league => res.json(league))
-})
-
-app.post('/leagues', (req,res) => {
-  Leagues.create(req.body)
-    .then(league => res.json(league))
-})
-
-app.patch('/leagues/:id', async (req,res) => {
-  let league = await Leagues.findByPk(req.params.id)
-  league.update(req.body)
-})
-
-app.delete('/leagues/:id', async (req,res) => {
-  let league = await Leagues.findByPk(req.params.id)
-  league.destroy()
-})
-
-//Users Server - Stretch
-app.get('/users', (req,res) => {
-  Users.findAll()
-    .then(users => res.json(users))
-})
-
-app.get('/users/:id', (req,res) => {
-  Users.findByPk(req.params.id)
-    .then(user => res.json(user))
-})
-
-app.post('/users', (req,res) => {
-  Users.create(req.body)
-    .then(user => res.json(user))
-})
-
-app.patch('/users/:id', async (req,res) => {
-  let user = await Users.findByPk(req.params.id)
-  user.update(req.body)
-})
-
-app.delete('/users/:id', async (req,res) => {
-  let user = await Users.findByPk(req.params.id)
-  user.destroy()
-})
 
 //Listener Port 6969 - Because Justin is a Child
 const port = 6969

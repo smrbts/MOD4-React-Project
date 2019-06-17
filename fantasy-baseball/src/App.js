@@ -12,7 +12,7 @@ import PlayerCollection from './containers/PlayerCollection'
 const PlayerURL = `http://localhost:6969/players`
 const StatURL = `http://localhost:6969/stats/`
 
-export default class App extends Component 
+export default class App extends Component
 {
   constructor()
   {
@@ -95,5 +95,5 @@ export default class App extends Component
       </BrowserRouter>
     );
   }
- 
+
 }

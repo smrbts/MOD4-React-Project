@@ -1,4 +1,4 @@
-//require the model file
+//require the model files
 const Stats = require('./models/Stats')
 const Players = require('./models/Players')
 const FantasyTeams = require('./models/FantasyTeams')
@@ -29,7 +29,7 @@ const options = (url) => {
     method: 'GET',
     agent: false,
     pool:{
-      maxSockets: 100
+      maxSockets: 258
     },
     timeout: 120000,
     time: true,

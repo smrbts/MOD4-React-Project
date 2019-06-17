@@ -10,30 +10,30 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 
 const useStyles = makeStyles(theme => ({
-  root: 
+  root:
   {
     flexGrow: 1,
   },
-  menuButton: 
+  menuButton:
   {
     marginRight: theme.spacing(2),
   },
-  title: 
+  title:
   {
     flexGrow: 1,
   },
 }));
 
-export default function ButtonAppBar() 
+export default function ButtonAppBar(props)
 {
     const [anchorEl, setAnchorEl] = React.useState(null);
 
-    const handleClick = (event) => 
+    const handleClick = (event) =>
     {
     setAnchorEl(event.currentTarget)
     }
 
-    const handleClose = () => 
+    const handleClose = () =>
     {
         setAnchorEl(null)
     }
@@ -44,13 +44,13 @@ export default function ButtonAppBar()
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-        <IconButton 
-        edge="start" 
-        className={classes.menuButton} 
-        color="inherit" 
+        <IconButton
+        edge="start"
+        className={classes.menuButton}
+        color="inherit"
         aria-label="Menu"
-        aria-controls="simple-menu" 
-        aria-haspopup="true" 
+        aria-controls="simple-menu"
+        aria-haspopup="true"
         onClick={handleClick}
         >
             <MenuIcon />
@@ -69,7 +69,11 @@ export default function ButtonAppBar()
           <Typography variant="h6" className={classes.title}>
             Fantasy Baseball Home
           </Typography>
-          <Button color="inherit">
+          <Button
+          color="inherit"
+          href="/"
+          onClick={e=>props.logOut(e)}
+          >
               Logout
           </Button>
         </Toolbar>

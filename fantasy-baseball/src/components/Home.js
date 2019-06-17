@@ -1,13 +1,13 @@
 import React, {Component}from 'react';
 import LeagueTeams from '../containers/LeagueTeams'
 
-export default class Home extends Component 
+export default class Home extends Component
 {
   render()
   {
     return (
-      <LeagueTeams/>
-    ); 
+      <LeagueTeams players= {this.props.players} signedIn = {this.props.signedIn} logOut={this.props.logOut}/>
+    );
   }
- 
+
 }

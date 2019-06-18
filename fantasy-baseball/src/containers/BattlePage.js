@@ -10,7 +10,7 @@ export default class BattlePage extends Component
   {
     return (
         <div className="ui segment">
-                <div className="ui segment tertiary inverted blue bot-army">
+                <div className="ui center aligned segment tertiary inverted blue bot-army">
                 <Button
                     href='/home'
                     justify="center"
@@ -20,12 +20,12 @@ export default class BattlePage extends Component
                     Return Home  
                 </Button><br></br>
                     YOUR TEAM
-                <div className="ui twelve column centered stackable grid">
+                <div className="ui center aligned twelve column centered stackable grid">
                     {this.props.opponentPlayers.map(player => <OtherTeam player= {player}/>)} 
                 </div>
         </div>
             <div className="ui divider"> 
-                <div className="ui segment tertiary inverted red bot-army">
+                <div className="ui center aligned segment tertiary inverted red bot-army">
                             ENEMY TEAM
                         <div className="ui twelve column centered stackable grid">
                             {this.props.opponentPlayers.map(player => <OtherTeam player= {player}/>)}   

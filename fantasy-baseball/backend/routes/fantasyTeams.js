@@ -5,14 +5,15 @@ const auth = require('../middleware/auth');
 const FantasyTeams = require('../models/FantasyTeams')
 
 //Fantasy Teams Server
-router.get('/', (req,res) => {
-  FantasyTeams.findAll()
+router.get('/', auth, (req,res) => {
+  console.log(req.user.id)
+  FantasyTeams.findAll({where: {userId:req.user.id} })
     .then(teams => res.json(teams))
 })
 
-router.get('/:id', (req,res) => {
-  FantasyTeams.findByPk(req.params.id)
-    .then(team => res.json(team))
+router.get('/all', (req,res) => {
+  FantasyTeams.findAll()
+    .then(teams => res.json(teams))
 })
 
 router.post('/', auth, (req,res) => {

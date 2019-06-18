@@ -62,7 +62,7 @@ export default class App extends Component
       else {
         localStorage.token = data.token
         this.setState({
-          currentUser: data.user.userId
+          currentUser: data.user.id
         })
         window.location.href = 'http://localhost:3000/home'
       }
@@ -87,7 +87,7 @@ export default class App extends Component
     .then(data=>{
       localStorage.token = data.token
       this.setState({
-        currentUser: data.user.userId
+        currentUser: data.user.id
       })
       window.location.href = 'http://localhost:3000/home'
     })
@@ -160,8 +160,8 @@ export default class App extends Component
           <Switch>
            <Route exact path='/' render={(routeProps) => <WelcomePage {...routeProps} logIn = {this.logIn} signedIn = {this.state.signedIn} opponentPlayers={this.state.opponentPlayers} /> }/>
            <Route exact path='/sign-up' render={(routeProps) => <SignUp {...routeProps} signUp = {this.signUp}/>} />
-           <Route exact path='/home' render={(routeProps) => <Home {...routeProps} checkForTeam = {this.checkForTeam} players= {this.state.players} signedIn = {this.state.signedIn} logOut={this.logOut}/>} />
            <Route exact path='/create-team' render={(routeProps) => <PlayerCollection {...routeProps} openPlayers= {this.state.openPlayers} addPlayer={this.addPlayer} team = {this.state.team}/>} />
+           <Route exact path='/home' render={(routeProps) => <Home {...routeProps} checkForTeam = {this.checkForTeam} players= {this.state.players} user={this.state.currentUser} logOut={this.logOut}/>} />
            <Route exact path='/my-team' render={(routeProps) => <YourTeam {...routeProps} />} />
           </Switch>
        </div>

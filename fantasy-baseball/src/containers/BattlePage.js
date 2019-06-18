@@ -10,25 +10,31 @@ export default class BattlePage extends Component
   {
     return (
         <div className="ui segment">
-         <Button
-           href='/home'
-           justify="center"
-           variant="contained" 
-           color="primary"
-           >
-           Return Home  
-         </Button><br></br>
-            YOUR TEAM
-            <div className="ui twelve column centered stackable grid">
-                {this.props.opponentPlayers.map(player => <OtherTeam player= {player}/>)} 
-            </div>
-        <div className="ui divider"> 
-            ENEMY TEAM
+                <div className="ui segment tertiary inverted blue bot-army">
+                <Button
+                    href='/home'
+                    justify="center"
+                    variant="contained" 
+                    color="primary"
+                    >
+                    Return Home  
+                </Button><br></br>
+                    YOUR TEAM
+                <div className="ui twelve column centered stackable grid">
+                    {this.props.opponentPlayers.map(player => <OtherTeam player= {player}/>)} 
+                </div>
         </div>
-            <div className="ui twelve column centered stackable grid">
-                {this.props.opponentPlayers.map(player => <OtherTeam player= {player}/>)}   
+            <div className="ui divider"> 
+                <div className="ui segment tertiary inverted red bot-army">
+                            ENEMY TEAM
+                        <div className="ui twelve column centered stackable grid">
+                            {this.props.opponentPlayers.map(player => <OtherTeam player= {player}/>)}   
+                        </div>
+                </div>
             </div>
         </div>
+         
+
     );
   }
  

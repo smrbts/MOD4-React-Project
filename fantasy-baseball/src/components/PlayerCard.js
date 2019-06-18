@@ -23,9 +23,6 @@ class PlayerCard extends Component
       <div className="ui column">
         <div className="ui card"
           key={this.props.player.id}
-          // onClick={() => props.showInfo ? props.showInfo(props.bot): props.removeBot(props.bot)}
-          // (event) => {props.showInfo(event.target.value)}
-          // props.recruitBot? props.recruitBot(props.bot) : props.removeBot(props.bot) move this to the BotSpec show page
         >
           <div className="image">
               <img alt="oh no!" src={`https://securea.mlb.com/mlb/images/players/head_shot/${this.props.player.id}@2x.jpg`} />

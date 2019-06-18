@@ -7,7 +7,7 @@ export default class YourTeam extends Component
   render()
   {
     return (
-      <div className="ui segment inverted olive bot-army">
+      <div className="ui segment tertiary inverted blue bot-army">
          <Button
          href='/home'
          justify="center"

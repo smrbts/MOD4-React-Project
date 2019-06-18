@@ -31,6 +31,8 @@ export default class PlayerStats extends Component
     console.log(this.state.stats)
     return (
     <div>
+    {this.state.stats ? 
+    <div>
     {this.state.isLoading ? 'Loading....' :
     <div className="ui list"> 
         <div className="item">Hits: {this.state.stats.h ? this.state.stats.h : "N/A"}</div>
@@ -49,6 +51,7 @@ export default class PlayerStats extends Component
         <div className="item">HWA(pitching): {this.state.stats.p_hwa ? this.state.stats.p_hwa : "N/A"}</div>
     </div>
         }
+    </div> : null}
     </div>
     );
   }

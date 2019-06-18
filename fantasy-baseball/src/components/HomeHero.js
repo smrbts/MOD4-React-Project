@@ -59,7 +59,10 @@ export default function CardCollection(props){
               </Button>
             </Grid>
             <Grid item>
-              <Button variant="outlined" color="primary">
+              <Button 
+              href='/battle'
+              variant="outlined" 
+              color="primary">
                 Play now!
               </Button>
             </Grid>

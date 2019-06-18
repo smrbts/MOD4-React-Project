@@ -16,7 +16,7 @@ export default class CardCollection extends Component {
   }
 
   componentDidMount() {
-    fetch(`http://localhost:6969/teams/`,{
+    fetch(`http://localhost:6969/teams/all`,{
       method: 'GET',
       headers: {
         'content-type': 'application/json',
@@ -35,7 +35,9 @@ export default class CardCollection extends Component {
         }
       })
   }
-  render() {
+  render() 
+  {
+    console.log(this.state.teamCards)
     return (
       <React.Fragment>
       <header> <Header logOut={this.props.logOut} /> </header>

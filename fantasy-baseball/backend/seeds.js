@@ -152,18 +152,18 @@ const fantasyTeam = [
         "leagueId": 1,
         "teamName": "The Houston Hashtronauts",
         "imgURL": "https://spacecenter.org/wp-content/uploads/2013/04/astronaut_main_bg.jpg",
-        "pitcher": null,
-        "catcher": null,
-        "firstBase": null,
-        "secondBase": null,
-        "thirdBase": null,
-        "shortStop": null,
+        "pitcher": 425844,
+        "catcher": 425772,
+        "firstBase": 405395,
+        "secondBase": 429664,
+        "thirdBase": 435062,
+        "shortStop": 462101,
         "leftField": 493316,
-        "centerField": null,
-        "rightField": null,
-        "bench1": null,
-        "bench1": null,
-        "bench3": null
+        "centerField": 435622,
+        "rightField": 457803,
+        "bench1": 282332,
+        "bench2": 467055,
+        "bench3": 475582
     }
 ]
 fantasyTeam.forEach(team => FantasyTeams.create(team))

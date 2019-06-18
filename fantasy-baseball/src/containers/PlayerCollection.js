@@ -8,7 +8,7 @@ export default class PlayerCollection extends Component
   render()
   {
     return (
-      <div className= "row">  
+      <div className= "row"> 
       <YourTeam team = {this.props.team}/>
       <div className= "ui four column grid">
         <div className= "row">        

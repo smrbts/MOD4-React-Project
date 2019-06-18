@@ -35,7 +35,6 @@ export default class CardCollection extends Component {
         }
       })
   }
-
   render() {
     return (
       <React.Fragment>

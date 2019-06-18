@@ -6,7 +6,7 @@ const Leagues = require('./models/Leagues')
 const Users = require('./models/users')
 const request = require('request')
 
-process.env.UV_THREADPOOL_SIZE = 128
+process.env.UV_THREADPOOL_SIZE = 256
 
 const d = new Date ()
 const BASE_URL = 'http://lookup-service-prod.mlb.com'
@@ -29,7 +29,7 @@ const options = (url) => {
     method: 'GET',
     agent: false,
     pool:{
-      maxSockets: 258
+      maxSockets: 256
     },
     timeout: 120000,
     time: true,
@@ -173,22 +173,22 @@ const leagues = [
         "id": 1,
         "userId": 1,
         "leagueName": "Default League",
-        "imageURL": "https://a2.espncdn.com/combiner/i?img=%2Fi%2Fespn%2Fmisc_logos%2F500%2Fflb.png",
+        "imageURL": "https://media.wired.com/photos/5b899992404e112d2df1e94e/master/pass/trash2-01.jpg",
         "description": "This is a League for Winners. Clearly."
     }
 ]
 leagues.forEach(team => Leagues.create(team))
 
-const users = [
-    {
-        "id": 1,
-        "username": "SamTheMan",
-        "password": "FluffyDuck",
-        "first_name": "Sam",
-        "last_name": "Man",
-        "bio": "My middle name is 'The'"
-    }
-]
-users.forEach(user => Users.create(user))
+// const users = [
+//     {
+//         "id": 1,
+//         "username": "justin",
+//         "password": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNTYwODcwMTk0LCJleHAiOjE1NjA4NzM3OTR9.rgYB9lpoh7nQginog96ECoMZ6pwQ7Aah2VDbDTflPxU",
+//         "first_name": "Sam",
+//         "last_name": "Man",
+//         "bio": "My middle name is 'The'"
+//     }
+// ]
+// users.forEach(user => Users.create(user))
 
 //seed data using 'node seeds.js'

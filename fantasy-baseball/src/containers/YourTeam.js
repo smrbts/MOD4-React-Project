@@ -1,4 +1,5 @@
 import React, {Component}from 'react';
+import PlayerCard from '../components/PlayerCard'
 
 export default class YourTeam extends Component 
 {
@@ -8,7 +9,7 @@ export default class YourTeam extends Component
       <div className="ui segment inverted olive bot-army">
       <div className="ui four column grid">
         <div className="row bot-army-row">
-          Your Team Here
+        {this.props.team.map(player => <PlayerCard player = {player} />)}
         </div>
       </div>
     </div>

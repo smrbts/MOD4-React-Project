@@ -71,7 +71,7 @@ export default function CardCollection(props)
                   href='/create-team'
                   variant="contained"
                   color="primary">
-                  View my team
+                  Create my team
                   </Button>
                 </Grid>
                 <Grid item>
@@ -103,7 +103,11 @@ export default function CardCollection(props)
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Button size="small" color="primary">
+                    <Button 
+                    size="small" 
+                    color="primary"
+                    
+                    >
                       View Team
                     </Button>
                   </CardActions>

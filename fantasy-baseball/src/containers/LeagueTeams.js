@@ -43,7 +43,7 @@ export default class CardCollection extends Component {
           <HomeHero />
           {this.state.teamCards.length === 0 ?
             <center><img alt='uh-oh' height='200px' style={{opacity:0.15}} src='https://images.vexels.com/media/users/3/129330/isolated/preview/af374baf0cd41b67b198cd79a13955f9-baseball-player-silhouette-by-vexels.png'></img></center>
-              : <TeamCards cards={this.state.teamCards} /> }
+              : <TeamCards cards={this.state.teamCards} showTeam={this.props.showTeam}/> }
         </main>
       </React.Fragment>
     )

@@ -8,9 +8,8 @@ import SignUp from './components/SignUp'
 import YourTeam from './containers/YourTeam';
 import PlayerCollection from './containers/PlayerCollection'
 
-
-const PlayerURL = `http://localhost:6969/players`
 const StatURL = `http://localhost:6969/stats/`
+const PlayerURL = `http://localhost:6969/players`
 
 export default class App extends Component
 {
@@ -21,7 +20,6 @@ export default class App extends Component
     {
       players: [],
       openPlayers: [],
-      team: [],
       opponentPlayers: [],
       hasTeam: false,
       currentUser: null,
@@ -93,18 +91,6 @@ export default class App extends Component
     })
   }
 
-  addPlayer = (player) => 
-  {
-    let arr = this.state.openPlayers.filter(p => player.id === p.id)
-    let list = this.state.team.concat(arr)
-    console.log(list)
-    this.setState(
-      {
-        team: list,
-        openPlayers: this.state.openPlayers.filter(p => player.id !== p.id)
-      })
-  }
-
   shufflePlayers= () =>
   {
     let arr = this.state.players
@@ -136,19 +122,15 @@ export default class App extends Component
       })
   }
 
-  componentDidMount()
-  {
+  componentDidMount(){
     fetch(PlayerURL)
     .then(res => res.json())
     .then(data =>
       {
         this.setState(
           {
-            players: data,
-            isLoaded: true
+            players: data
           })
-          this.shufflePlayers(this.state.openPlayers)
-          this.shuffleOpponents(this.state.opponentPlayers)
       })
   }
 

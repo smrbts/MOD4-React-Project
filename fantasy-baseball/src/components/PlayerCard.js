@@ -3,14 +3,14 @@ import 'semantic-ui-css/semantic.min.css'
 import PlayerStats from './PlayerStats'
 
 
-class PlayerCard extends Component 
+class PlayerCard extends Component
 {
-  state = 
+  state =
   {
     clicked: false
   }
 
-  handleStatsClick = () => 
+  handleStatsClick = () =>
   {
     this.setState(
       {
@@ -32,7 +32,7 @@ class PlayerCard extends Component
           </div>
           <div className="content">
               <div className="header">
-                {this.props.player.name_display_first_last} 
+                {this.props.player.name_display_first_last}
               </div>
               <div className="meta text-wrap">
                 <small>{this.props.player.team_name}</small>
@@ -49,7 +49,7 @@ class PlayerCard extends Component
                 <i className="icon shield" />
                 {this.props.player.primary_stat_type}
               </span>
-              <button 
+              <button
                 className="ui button fluid"
                 onClick={() => this.props.addPlayer(this.props.player)}
                 >
@@ -58,7 +58,7 @@ class PlayerCard extends Component
           </div>
           <div className="extra content">
             {this.state.clicked ? <PlayerStats player={this.props.player}/> : null}
-            <button 
+            <button
                 className="ui button fluid"
                 onClick={this.handleStatsClick}
                 >
@@ -72,8 +72,8 @@ class PlayerCard extends Component
 
 
   }
-  
-  
+
+
 
 };
 

@@ -1,12 +1,28 @@
 import React, {Component}from 'react';
 import LeagueTeams from '../containers/LeagueTeams'
+import ShowTeam from './ShowTeam'
 
-export default class Home extends Component
-{
+export default class Home extends Component{
+
+  constructor() {
+    super()
+    this.state = {
+      displayTeam: null
+    }
+  }
+
+  showTeam = (team) => {
+    this.setState({
+      displayTeam: team
+    })
+  }
+
   render()
   {
     return (
-      <LeagueTeams players= {this.props.players} signedIn = {this.props.signedIn} logOut={this.props.logOut} user={this.props.user}/>
+      <React.Fragment>
+        {this.state.displayTeam === null ? <LeagueTeams players={this.props.players} showTeam={this.showTeam}/> : <ShowTeam players={this.props.players} team={this.state.displayTeam} />}
+      </React.Fragment>
     );
   }
 

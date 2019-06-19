@@ -37,7 +37,7 @@ export default class CardCollection extends Component {
   }
   render() 
   {
-    console.log(this.state.teamCards)
+    
     return (
       <React.Fragment>
       <header> <Header logOut={this.props.logOut} /> </header>

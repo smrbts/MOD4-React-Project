@@ -3,6 +3,7 @@ import PlayerCard from '../components/PlayerCard'
 import OtherTeam from '../components/OtherTeam'
 import Button from '@material-ui/core/Button';
 import YourTeam from './YourTeam';
+import ShowTeam from '../components/ShowTeam'
 
 export default class BattlePage extends Component 
 {
@@ -20,14 +21,15 @@ export default class BattlePage extends Component
                     Return Home  
                 </Button><br></br>
                     YOUR TEAM
-                <div className="ui center aligned twelve column centered stackable grid">
-                    {this.props.opponentPlayers.map(player => <OtherTeam player= {player}/>)} 
+                <div className="ui center aligned seven column centered stackable grid">
+                    {/* {this.props.opponentPlayers.map(player => <OtherTeam player= {player}/>)}  */}
+                    {/* {<ShowTeam/>} */}
                 </div>
         </div>
             <div className="ui divider"> 
                 <div className="ui center aligned segment tertiary inverted red bot-army">
                             ENEMY TEAM
-                        <div className="ui twelve column centered stackable grid">
+                        <div className="ui seven column centered stackable grid">
                             {this.props.opponentPlayers.map(player => <OtherTeam player= {player}/>)}   
                         </div>
                 </div>

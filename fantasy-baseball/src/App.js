@@ -134,6 +134,7 @@ export default class App extends Component
           {
             players: data
           })
+          this.shuffleOpponents(data)
       })
   }
 

@@ -52,8 +52,20 @@ export default function CardCollection(props){
         <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
           {props.team.teamName}
         </Typography>
+        <Grid container spacing={2} justify="center">
+            <Grid item>
+              <Button
+              href='/home'
+              variant="contained"
+              color="primary">
+              Go Back
+              </Button>
+            </Grid>
+        </Grid>
         <div className={classes.heroButtons}>
-          <Grid container spacing={7} justify="center">
+        <div className= "ui three column centered grid">
+        <div className= "row">
+          {/* <Grid container spacing={10} justify="center"> */}
             {!!props.team.pitcher ? <PlayerCard player={props.players.find(player=>{return player.id === props.team.pitcher})} drafted={true}/> : null}
             {!!props.team.catcher ? <PlayerCard player={props.players.find(player=>{return player.id === props.team.catcher})} drafted={true}/> : null}
             {!!props.team.firstBase ? <PlayerCard player={props.players.find(player=>{return player.id === props.team.firstBase})} drafted={true}/> : null}
@@ -61,8 +73,8 @@ export default function CardCollection(props){
             {!!props.team.thirdBase ? <PlayerCard player={props.players.find(player=>{return player.id === props.team.thirdBase})} drafted={true}/> : null}
             {!!props.team.shortStop ? <PlayerCard player={props.players.find(player=>{return player.id === props.team.shortStop})} drafted={true}/> : null}
             {!!props.team.leftField ? <PlayerCard player={props.players.find(player=>{return player.id === props.team.leftField})} drafted={true}/> : null}
-          </Grid>
-          <Grid container spacing={7} justify="center">
+          {/* </Grid> */}
+          {/* <Grid container spacing={7} justify="center"> */}
             {!!props.team.centerField ? <PlayerCard player={props.players.find(player=>{return player.id === props.team.centerField})} drafted={true}/> : null}
             {!!props.team.rightField ? <PlayerCard player={props.players.find(player=>{return player.id === props.team.rightField})} drafted={true}/> : null}
             {!!props.team.bench0 ? <PlayerCard player={props.players.find(player=>{return player.id === props.team.bench0})} drafted={true}/> : null}
@@ -70,7 +82,9 @@ export default function CardCollection(props){
             {!!props.team.bench2 ? <PlayerCard player={props.players.find(player=>{return player.id === props.team.bench2})} drafted={true}/> : null}
             {!!props.team.bench3 ? <PlayerCard player={props.players.find(player=>{return player.id === props.team.bench3})} drafted={true}/> : null}
             {!!props.team.bench4 ? <PlayerCard player={props.players.find(player=>{return player.id === props.team.bench4})} drafted={true}/> : null}
-          </Grid>
+          {/* </Grid> */}
+        </div>
+        </div>
         </div>
       </Container>
     </div>

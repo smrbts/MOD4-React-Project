@@ -67,6 +67,12 @@ export default function TeamCards(props){
                 <Button size="small" color="primary" onClick={()=>props.showTeam(card)}>
                   View Team
                 </Button>
+                <Button
+                  href={`/battle/${card.id}`}
+                  variant="outlined"
+                  color="primary">
+                    Play now!
+                </Button>
               </CardActions>
             </Card>
           </Grid>

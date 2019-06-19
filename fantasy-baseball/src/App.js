@@ -8,10 +8,7 @@ import SignUp from './components/SignUp'
 import YourTeam from './containers/YourTeam';
 import PlayerCollection from './containers/PlayerCollection'
 import BattlePage from './containers/BattlePage'
-import OpponentTeam from './containers/OpponentTeam'
 
-
-const StatURL = `http://localhost:6969/stats/`
 const PlayerURL = `http://localhost:6969/players`
 
 export default class App extends Component
@@ -118,7 +115,7 @@ export default class App extends Component
   {
     let arr = this.state.players
     let shuffled = arr.sort(() => 0.5 - Math.random())
-    let list = shuffled.slice(0,12)
+    let list = shuffled.slice(0,14)
     this.setState(
       {
         opponentPlayers: list
@@ -134,7 +131,7 @@ export default class App extends Component
           {
             players: data
           })
-          this.shuffleOpponents(data)
+          this.shuffleOpponents()
       })
   }
 
@@ -149,7 +146,7 @@ export default class App extends Component
            <Route exact path='/create-team' render={(routeProps) => <PlayerCollection {...routeProps} openPlayers= {this.state.openPlayers} addPlayer={this.addPlayer} team = {this.state.team}/>} />
            <Route exact path='/home' render={(routeProps) => <Home {...routeProps} checkForTeam = {this.checkForTeam} players= {this.state.players} user={this.state.currentUser} logOut={this.logOut}/>} />
            <Route exact path='/my-team' render={(routeProps) => <YourTeam {...routeProps} />} />
-           <Route exact path='/battle' render={(routeProps) => <BattlePage {...routeProps} opponentPlayers={this.state.opponentPlayers} team={this.state.team}/>} />
+           <Route path='/battle' render={(routeProps) => <BattlePage {...routeProps} opponentPlayers={this.state.opponentPlayers} team={this.state.team}/>} />
           </Switch>
        </div>
       </BrowserRouter>

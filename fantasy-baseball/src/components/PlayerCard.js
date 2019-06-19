@@ -7,7 +7,8 @@ class PlayerCard extends Component
 {
   state =
   {
-    clicked: false
+    clicked: false,
+    drafted: this.props.drafted ? true : false
   }
 
   handleStatsClick = () =>
@@ -23,9 +24,6 @@ class PlayerCard extends Component
       <div className="ui column">
         <div className="ui card"
           key={this.props.player.id}
-          // onClick={() => props.showInfo ? props.showInfo(props.bot): props.removeBot(props.bot)}
-          // (event) => {props.showInfo(event.target.value)}
-          // props.recruitBot? props.recruitBot(props.bot) : props.removeBot(props.bot) move this to the BotSpec show page
         >
           <div className="image">
               <img alt="oh no!" src={`https://securea.mlb.com/mlb/images/players/head_shot/${this.props.player.id}@2x.jpg`} />
@@ -49,12 +47,14 @@ class PlayerCard extends Component
                 <i className="icon shield" />
                 {this.props.player.primary_stat_type}
               </span>
-              <button
-                className="ui button fluid"
-                onClick={() => this.props.addPlayer(this.props.player)}
-                >
-                Draft
-              </button>
+              {this.state.drafted ? null :
+                <button
+                  className="ui button fluid"
+                  onClick={() => this.props.addPlayer(this.props.player)}
+                  >
+                  Draft
+                </button>
+              }
           </div>
           <div className="extra content">
             {this.state.clicked ? <PlayerStats player={this.props.player}/> : null}

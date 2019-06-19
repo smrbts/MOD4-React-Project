@@ -40,18 +40,13 @@ const useStyles = makeStyles(theme => ({
 export default function CardCollection(props){
 
   const classes = useStyles();
-
-  // debugger
-
-  // console.log(props.players.find(player=>{return player.id === props.team.leftField}))
-
   return (
     <div className={classes.heroContent}>
       <Container maxWidth="sm">
         <CardMedia
           className={classes.cardMedia}
           image={props.team.imgURL}
-          height='400px'
+          height='300px'
           title="Image title"
         />
         <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
@@ -59,22 +54,22 @@ export default function CardCollection(props){
         </Typography>
         <div className={classes.heroButtons}>
           <Grid container spacing={7} justify="center">
-            <Grid item>{props.team.pitcher ? <PlayerCard player={props.players.find(player=>{return player.id === props.team.pitcher})} /> : null}</Grid>
-            <Grid item>{props.team.catcher ? <PlayerCard player={props.players.find(player=>{return player.id === props.team.catcher})} /> : null}</Grid>
-            <Grid item>{props.team.firstBase ? <PlayerCard player={props.players.find(player=>{return player.id === props.team.firstBase})} /> : null}</Grid>
-            <Grid item>{props.team.secondBase ? <PlayerCard player={props.players.find(player=>{return player.id === props.team.secondBase})} /> : null}</Grid>
-            <Grid item>{props.team.thirdBase ? <PlayerCard player={props.players.find(player=>{return player.id === props.team.thirdBase})} /> : null}</Grid>
-            <Grid item>{props.team.shortStop ? <PlayerCard player={props.players.find(player=>{return player.id === props.team.shortStop})} /> : null}</Grid>
-            <Grid item>{props.team.leftField ? <PlayerCard player={props.players.find(player=>{return player.id === props.team.leftField})} /> : null}</Grid>
+            {!!props.team.pitcher ? <PlayerCard player={props.players.find(player=>{return player.id === props.team.pitcher})} drafted={true}/> : null}
+            {!!props.team.catcher ? <PlayerCard player={props.players.find(player=>{return player.id === props.team.catcher})} drafted={true}/> : null}
+            {!!props.team.firstBase ? <PlayerCard player={props.players.find(player=>{return player.id === props.team.firstBase})} drafted={true}/> : null}
+            {!!props.team.secondBase ? <PlayerCard player={props.players.find(player=>{return player.id === props.team.secondBase})} drafted={true}/> : null}
+            {!!props.team.thirdBase ? <PlayerCard player={props.players.find(player=>{return player.id === props.team.thirdBase})} drafted={true}/> : null}
+            {!!props.team.shortStop ? <PlayerCard player={props.players.find(player=>{return player.id === props.team.shortStop})} drafted={true}/> : null}
+            {!!props.team.leftField ? <PlayerCard player={props.players.find(player=>{return player.id === props.team.leftField})} drafted={true}/> : null}
           </Grid>
           <Grid container spacing={7} justify="center">
-            <Grid item>{props.team.centerField ? <PlayerCard player={props.players.find(player=>{return player.id === props.team.centerField})} /> : null}</Grid>
-            <Grid item>{props.team.rightField ? <PlayerCard player={props.players.find(player=>{return player.id === props.team.rightField})} /> : null}</Grid>
-            <Grid item>{props.team.designatedHitter ? <PlayerCard player={props.players.find(player=>{return player.id === props.team.designatedHitter})} /> : null}</Grid>
-            <Grid item>{props.team.bench1 ? <PlayerCard player={props.players.find(player=>{return player.id === props.team.bench1})} /> : null}</Grid>
-            <Grid item>{props.team.bench2 ? <PlayerCard player={props.players.find(player=>{return player.id === props.team.bench2})} /> : null}</Grid>
-            <Grid item>{props.team.bench3 ? <PlayerCard player={props.players.find(player=>{return player.id === props.team.bench3})} /> : null}</Grid>
-            <Grid item>{props.team.bench4 ? <PlayerCard player={props.players.find(player=>{return player.id === props.team.bench4})} /> : null}</Grid>
+            {!!props.team.centerField ? <PlayerCard player={props.players.find(player=>{return player.id === props.team.centerField})} drafted={true}/> : null}
+            {!!props.team.rightField ? <PlayerCard player={props.players.find(player=>{return player.id === props.team.rightField})} drafted={true}/> : null}
+            {!!props.team.bench0 ? <PlayerCard player={props.players.find(player=>{return player.id === props.team.bench0})} drafted={true}/> : null}
+            {!!props.team.bench1 ? <PlayerCard player={props.players.find(player=>{return player.id === props.team.bench1})} drafted={true}/> : null}
+            {!!props.team.bench2 ? <PlayerCard player={props.players.find(player=>{return player.id === props.team.bench2})} drafted={true}/> : null}
+            {!!props.team.bench3 ? <PlayerCard player={props.players.find(player=>{return player.id === props.team.bench3})} drafted={true}/> : null}
+            {!!props.team.bench4 ? <PlayerCard player={props.players.find(player=>{return player.id === props.team.bench4})} drafted={true}/> : null}
           </Grid>
         </div>
       </Container>

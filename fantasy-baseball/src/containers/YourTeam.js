@@ -23,11 +23,11 @@ export default class YourTeam extends Component
           <div className="row bot-army-row">
             {this.props.team['CF'] ? <PlayerCard player = {this.props.team['CF']} /> : <div className="ui column">Draft a Center Fielder</div>}
             {this.props.team['RF'] ? <PlayerCard player = {this.props.team['RF']} /> : <div className="ui column">Draft a Right Fielder</div>}
-            {this.props.team['DH'] ? <PlayerCard player = {this.props.team['DH']} /> : <div className="ui column">Draft a Designated Hitter</div>}
             {this.props.team['bench'][0] ? <PlayerCard player = {this.props.team['bench'][0]} /> : <div className="ui column">Free Bench Space</div>}
             {this.props.team['bench'][1] ? <PlayerCard player = {this.props.team['bench'][1]} /> : <div className="ui column">Free Bench Space</div>}
             {this.props.team['bench'][2] ? <PlayerCard player = {this.props.team['bench'][2]} /> : <div className="ui column">Free Bench Space</div>}
             {this.props.team['bench'][3] ? <PlayerCard player = {this.props.team['bench'][3]} /> : <div className="ui column">Free Bench Space</div>}
+            {this.props.team['bench'][4] ? <PlayerCard player = {this.props.team['bench'][4]} /> : <div className="ui column">Free Bench Space</div>}
           </div>
         </div>
       </div>

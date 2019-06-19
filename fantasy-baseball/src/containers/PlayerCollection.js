@@ -21,7 +21,6 @@ export default class PlayerCollection extends Component{
         'LF': null,
         'CF': null,
         'RF': null,
-        'DH': null,
         'bench': []
       },
       openPlayers: [],
@@ -31,7 +30,7 @@ export default class PlayerCollection extends Component{
 
   addPlayer = (player) =>
   {
-    if (this.state.team[player.primary_position_txt] === null) {
+    if (player.primary_position_txt !== 'DH' && this.state.team[player.primary_position_txt] === null) {
       this.setState(
         {
           team: {
@@ -41,7 +40,7 @@ export default class PlayerCollection extends Component{
           openPlayers: this.state.openPlayers.filter(p => player.id !== p.id)
         })
     }
-    else if (this.state.team.bench.length < 4) {
+    else if (this.state.team.bench.length < 5) {
       let newBench = [...this.state.team.bench, player]
       this.setState(
         {
@@ -53,7 +52,7 @@ export default class PlayerCollection extends Component{
         })
     }
     else {
-      let newBench = [...this.state.team.bench.slice(1,4), player]
+      let newBench = [...this.state.team.bench.slice(1,5), player]
       let openPlayers = this.state.openPlayers.filter(p => player.id !== p.id)
       this.setState(
         {
@@ -81,11 +80,11 @@ export default class PlayerCollection extends Component{
       leftField: this.state.team['LF'] ? this.state.team['LF'].id : null,
       centerField: this.state.team['CF'] ? this.state.team['CF'].id : null,
       rightField: this.state.team['RF'] ? this.state.team['RF'].id : null,
-      designatedHitter: this.state.team['DH'] ? this.state.team['DH'].id : null,
-      bench1: this.state.team['bench'][0] ? this.state.team['bench'][0].id : null,
-      bench2: this.state.team['bench'][1] ? this.state.team['bench'][1].id : null,
-      bench3: this.state.team['bench'][2] ? this.state.team['bench'][2].id : null,
-      bench4: this.state.team['bench'][3] ? this.state.team['bench'][3].id : null
+      bench0: this.state.team['bench'][0] ? this.state.team['bench'][0].id : null,
+      bench1: this.state.team['bench'][1] ? this.state.team['bench'][1].id : null,
+      bench2: this.state.team['bench'][2] ? this.state.team['bench'][2].id : null,
+      bench3: this.state.team['bench'][3] ? this.state.team['bench'][3].id : null,
+      bench4: this.state.team['bench'][4] ? this.state.team['bench'][4].id : null
     }
     console.log(teamObj)
     fetch('http://localhost:6969/teams', {
@@ -100,7 +99,6 @@ export default class PlayerCollection extends Component{
       .then(data=> {
         console.log(data)
       })
-      // ADD THE FETCH TO THE INDIVIDUAL PLAYERS SIGNIFYING THEY ARE DRAFTED
       window.location.href = 'http://localhost:3000/home'
   }
 
@@ -134,7 +132,6 @@ export default class PlayerCollection extends Component{
           autoFocus
         />
         <TextField
-          // defaultValue='https://webby-gallery-production.s3.amazonaws.com/uploads/asset/image/10885/3016000000107020_large.jpg'
           variant="outlined"
           margin="normal"
           fullWidth

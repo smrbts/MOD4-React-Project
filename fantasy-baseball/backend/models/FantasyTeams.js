@@ -30,7 +30,7 @@ const FantasyTeams = sequelize.define('fantasyTeams',{
     leftField: {type: INTEGER},
     centerField: {type: INTEGER},
     rightField: {type: INTEGER},
-    designatedHitter: {type: INTEGER},
+    bench0: {type: INTEGER},
     bench1: {type: INTEGER},
     bench2: {type: INTEGER},
     bench3: {type: INTEGER},

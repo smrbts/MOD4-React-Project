@@ -145,28 +145,28 @@ request(options(TEAMS_URL), (error,response,body) => {
   })
 
 //create seed data for Fantasy Teams
-const fantasyTeam = [
-    {
-        "id": 1,
-        "userId": 1,
-        "leagueId": 1,
-        "teamName": "The Houston Hashtronauts",
-        "imgURL": "https://spacecenter.org/wp-content/uploads/2013/04/astronaut_main_bg.jpg",
-        "pitcher": null,
-        "catcher": null,
-        "firstBase": null,
-        "secondBase": null,
-        "thirdBase": null,
-        "shortStop": null,
-        "leftField": 493316,
-        "centerField": null,
-        "rightField": null,
-        "bench1": null,
-        "bench1": null,
-        "bench3": null
-    }
-]
-fantasyTeam.forEach(team => FantasyTeams.create(team))
+// const fantasyTeam = [
+//     {
+//         "id": 1,
+//         "userId": 1,
+//         "leagueId": 1,
+//         "teamName": "The Houston Hashtronauts",
+//         "imgURL": "https://spacecenter.org/wp-content/uploads/2013/04/astronaut_main_bg.jpg",
+//         "pitcher": null,
+//         "catcher": null,
+//         "firstBase": null,
+//         "secondBase": null,
+//         "thirdBase": null,
+//         "shortStop": null,
+//         "leftField": 425783,
+//         "centerField": null,
+//         "rightField": null,
+//         "bench1": null,
+//         "bench1": null,
+//         "bench3": null
+//     }
+// ]
+// fantasyTeam.forEach(team => FantasyTeams.create(team))
 
 const leagues = [
     {

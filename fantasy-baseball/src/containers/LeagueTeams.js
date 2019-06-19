@@ -38,7 +38,6 @@ export default class CardCollection extends Component {
   render() {
     return (
       <React.Fragment>
-      <header> <Header logOut={this.props.logOut} /> </header>
         <main>
           <HomeHero />
           {this.state.teamCards.length === 0 ?

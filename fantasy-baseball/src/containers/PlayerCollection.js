@@ -4,6 +4,7 @@ import YourTeam from './YourTeam';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Header from '../components/Header'
 
 const PlayerURL = `http://localhost:6969/players`
 
@@ -120,6 +121,9 @@ export default class PlayerCollection extends Component{
   {
     return (
       <div className= "row">
+      <header>
+        <Header logOut={this.props.logOut} />
+      </header>
       <form>
         <TextField
           // defaultValue='A Really Cool Team Name'

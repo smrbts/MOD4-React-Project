@@ -30,12 +30,19 @@ export default function ButtonAppBar(props)
 
     const handleClick = (event) =>
     {
-    setAnchorEl(event.currentTarget)
+        setAnchorEl(event.currentTarget)
     }
 
-    const handleClose = () =>
+    const handleClose = (ref) =>
     {
         setAnchorEl(null)
+        window.location.href = `http://localhost:3000/${ref}`
+    }
+
+    const logOut = (e) => {
+      e.preventDefault()
+      localStorage.token = null
+      window.location.href = 'http://localhost:3000/'
     }
 
     const classes = useStyles();
@@ -62,9 +69,9 @@ export default function ButtonAppBar(props)
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <MenuItem onClick={handleClose}>Profile</MenuItem>
-        <MenuItem onClick={handleClose}>My account</MenuItem>
-        <MenuItem onClick={handleClose}>Logout</MenuItem>
+        <MenuItem onClick={() => handleClose('home')} >Profile</MenuItem>
+        <MenuItem onClick={() => handleClose('create-team')} >New Team</MenuItem>
+        <MenuItem onClick={e => logOut(e)}>Logout</MenuItem>
       </Menu>
           <Typography variant="h6" className={classes.title}>
             Fantasy Baseball Home

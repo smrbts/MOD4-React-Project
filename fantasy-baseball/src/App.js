@@ -95,7 +95,7 @@ export default class App extends Component
   {
     let arr = this.state.players
     let shuffled = arr.sort(() => 0.5 - Math.random())
-    let list = shuffled.slice(0,100)
+    let list = shuffled.slice(0,50)
     this.setState(
       {
         openPlayers: list
@@ -141,12 +141,13 @@ export default class App extends Component
       <BrowserRouter>
        <div>
           <Switch>
-           <Route exact path='/' render={(routeProps) => <WelcomePage {...routeProps} logIn = {this.logIn} signedIn = {this.state.signedIn} opponentPlayers={this.state.opponentPlayers} /> }/>
-           <Route exact path='/sign-up' render={(routeProps) => <SignUp {...routeProps} signUp = {this.signUp}/>} />
-           <Route exact path='/create-team' render={(routeProps) => <PlayerCollection {...routeProps} openPlayers= {this.state.openPlayers} addPlayer={this.addPlayer} team = {this.state.team}/>} />
-           <Route exact path='/home' render={(routeProps) => <Home {...routeProps} checkForTeam = {this.checkForTeam} players= {this.state.players} user={this.state.currentUser} logOut={this.logOut}/>} />
-           <Route exact path='/my-team' render={(routeProps) => <YourTeam {...routeProps} />} />
-           <Route path='/battle' render={(routeProps) => <BattlePage {...routeProps} opponentPlayers={this.state.opponentPlayers} team={this.state.team}/>} />
+             <Route exact path='/' render={(routeProps) => <WelcomePage {...routeProps} logIn = {this.logIn} signedIn = {this.state.signedIn} opponentPlayers={this.state.opponentPlayers} /> }/>
+             <Route exact path='/sign-up' render={(routeProps) => <SignUp {...routeProps} signUp = {this.signUp}/>} />
+             <Route exact path='/create-team' render={(routeProps) => <PlayerCollection {...routeProps} openPlayers= {this.state.openPlayers} addPlayer={this.addPlayer} />} />
+             <Route path='/edit-team' render={(routeProps) => <PlayerCollection {...routeProps} openPlayers= {this.state.openPlayers} addPlayer={this.addPlayer} />} />
+             <Route exact path='/home' render={(routeProps) => <Home {...routeProps} checkForTeam = {this.checkForTeam} players= {this.state.players} user={this.state.currentUser} logOut={this.logOut}/>} />
+             <Route exact path='/my-team' render={(routeProps) => <YourTeam {...routeProps} />} />
+             <Route path='/battle' render={(routeProps) => <BattlePage {...routeProps} opponentPlayers={this.state.opponentPlayers} team={this.state.team}/>} />
           </Switch>
        </div>
       </BrowserRouter>

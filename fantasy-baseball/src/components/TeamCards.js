@@ -47,7 +47,7 @@ export default function TeamCards(props){
     <Container className={classes.cardGrid} maxWidth="md">
       <Grid container spacing={4} justify= "center">
         {props.cards.map(card => { return (
-          <Grid item key={card} xs={12} sm={6} md={4}>
+          <Grid item key={card.id} xs={12} sm={6} md={4}>
             <Card className={classes.card}>
               <CardMedia
                 className={classes.cardMedia}
@@ -64,14 +64,19 @@ export default function TeamCards(props){
                 </Typography>
               </CardContent>
               <CardActions>
-                <Button size="small" color="primary" onClick={()=>props.showTeam(card)}>
+                <Button
+                  size="small"
+                  color="primary"
+                  variant="outlined"
+                  onClick={()=>props.showTeam(card)}>
                   View Team
                 </Button>
                 <Button
+                  size = "small"
                   href={`/battle/${card.id}`}
                   variant="outlined"
                   color="primary">
-                    Play now!
+                  Play now!
                 </Button>
               </CardActions>
             </Card>

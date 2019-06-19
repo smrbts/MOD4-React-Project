@@ -4,6 +4,7 @@ import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import CardMedia from '@material-ui/core/CardMedia';
 import PlayerCard from './PlayerCard';
+import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import 'namor';
 import 'cool-images';
@@ -54,10 +55,25 @@ export default function CardCollection(props){
         <Grid container spacing={2} justify="center">
             <Grid item>
               <Button
-              href='/home'
-              variant="contained"
-              color="primary">
-              Go Back
+                href='/home'
+                size="small"
+                variant="contained"
+                color="primary">
+                Go Back
+              </Button>
+              <Button
+                size="small"
+                href={`/edit-team/${props.team.id}`}
+                variant="contained"
+                color="primary">
+                Edit Team!
+              </Button>
+              <Button
+                size="small"
+                onClick={()=>props.deleteTeam(props.team)}
+                variant="contained"
+                color="primary">
+                Delete Team!
               </Button>
             </Grid>
         </Grid>

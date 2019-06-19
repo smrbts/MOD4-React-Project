@@ -2,6 +2,7 @@ import React, {Component}from 'react';
 import OtherTeam from '../components/OtherTeam'
 import Button from '@material-ui/core/Button';
 
+
 export default class BattlePage extends Component
 {
   constructor(props) {
@@ -60,6 +61,7 @@ export default class BattlePage extends Component
                 </Button><br></br>
                     YOUR TEAM
                 <div className="ui center aligned seven column centered stackable grid">
+
                     {this.state.home.map(player => <OtherTeam player= {player}/>)}
                 </div>
         </div>

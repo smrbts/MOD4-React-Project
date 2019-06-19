@@ -47,24 +47,23 @@ class PlayerCard extends Component
                 <i className="icon shield" />
                 {this.props.player.primary_stat_type}
               </span>
-              {this.state.drafted ? null :
-                <button
+              {this.state.clicked ? <PlayerStats player={this.props.player}/> : null}
+              <button
                   className="ui button fluid"
-                  onClick={() => this.props.addPlayer(this.props.player)}
+                  onClick={this.handleStatsClick}
                   >
-                  Draft
-                </button>
-              }
+                  {this.state.clicked? "Less Info": "Show Stats"}
+              </button>
           </div>
+          {this.state.drafted ? null :
           <div className="extra content">
-            {this.state.clicked ? <PlayerStats player={this.props.player}/> : null}
-            <button
+              <button
                 className="ui button fluid"
-                onClick={this.handleStatsClick}
+                onClick={() => this.props.addPlayer(this.props.player)}
                 >
-                {this.state.clicked? "Less Info": "Show Stats"}
-            </button>
-          </div>
+                Draft
+              </button>
+          </div>}
         </div>
       </div>
     );

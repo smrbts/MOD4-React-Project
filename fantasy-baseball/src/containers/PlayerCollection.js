@@ -3,7 +3,6 @@ import PlayerCard from '../components/PlayerCard'
 import YourTeam from './YourTeam';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Header from '../components/Header'
 
 const PlayerURL = `http://localhost:6969/players`
@@ -157,7 +156,7 @@ export default class PlayerCollection extends Component{
       <YourTeam team = {this.state.team}/>
       <div className= "ui four column grid">
         <div className= "row">
-        {this.state.openPlayers.map(player => <PlayerCard player = {player} addPlayer={this.addPlayer} />)}
+        {this.state.openPlayers.map(player => <PlayerCard player={player} addPlayer={this.addPlayer} key={player.id}/>)}
         </div>
       </div>
       </div>

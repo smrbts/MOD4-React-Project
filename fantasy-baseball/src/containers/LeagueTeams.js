@@ -1,8 +1,4 @@
 import React, {Component} from 'react';
-import Grid from '@material-ui/core/Grid';
-import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
-import Header from '../components/Header'
 import TeamCards from '../components/TeamCards'
 import HomeHero from '../components/HomeHero'
 import 'namor';
@@ -35,9 +31,8 @@ export default class CardCollection extends Component {
         }
       })
   }
-  render() 
+  render()
   {
-    console.log(this.state.teamCards)
     return (
       <React.Fragment>
         <main>

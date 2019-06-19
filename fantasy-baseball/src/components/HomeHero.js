@@ -12,7 +12,8 @@ const useStyles = makeStyles(theme => ({
     marginRight: theme.spacing(2),
   },
   heroContent: {
-    backgroundColor: theme.palette.background.paper,
+    // backgroundColor: theme.palette.background.paper,
+    backgroundColor: '#d4d4d570',
     padding: theme.spacing(8, 0, 6),
   },
   heroButtons: {
@@ -59,7 +60,10 @@ export default function CardCollection(props){
               </Button>
             </Grid>
             <Grid item>
-              <Button variant="outlined" color="primary">
+              <Button 
+              href='/battle'
+              variant="outlined" 
+              color="primary">
                 Play now!
               </Button>
             </Grid>

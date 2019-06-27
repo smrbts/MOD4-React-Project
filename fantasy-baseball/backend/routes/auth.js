@@ -44,7 +44,7 @@ router.post('/', (req, res) => {
 });
 
 router.get('/auth/user', auth, (req, res) => {
-  User.findById(req.user.id)
+  Users.findById(req.user.id)
     .select('-password')
     .then(user => res.json(user));
 });

@@ -12,7 +12,7 @@ export default class CardCollection extends Component {
   }
 
   componentDidMount() {
-    fetch(`http://localhost:6969/teams/all`,{
+    fetch(`http://localhost:6969/teams/`,{
       method: 'GET',
       headers: {
         'content-type': 'application/json',

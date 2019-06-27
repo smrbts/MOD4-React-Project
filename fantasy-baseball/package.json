@@ -24,7 +24,7 @@
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^0.87.1",
     "sequelize": "^5.8.9",
-    "sqlite3": "^4.0.8",
+    "sqlite3": "^4.0.9",
     "typeface-roboto": "0.0.54"
   },
   "scripts": {
